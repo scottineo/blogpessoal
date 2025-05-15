@@ -3,7 +3,6 @@ package com.generation.blogpessoal.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,11 +26,14 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
-	@Autowired
-	private UsuarioService usuarioService;
+	private final UsuarioService usuarioService;
 
-	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private final UsuarioRepository usuarioRepository;
+
+	public UsuarioController(UsuarioService usuarioService, UsuarioRepository usuarioRepository) {
+		this.usuarioService = usuarioService;
+		this.usuarioRepository = usuarioRepository;
+	}
 
 	@GetMapping("/all")
 	public ResponseEntity<List<Usuario>> getAll() {
@@ -42,7 +44,7 @@ public class UsuarioController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Usuario> getById(@PathVariable Long id) {
-		return usuarioRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
+		return usuarioRepository.findById(id).map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());
 	}
 

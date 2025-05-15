@@ -3,7 +3,6 @@ package com.generation.blogpessoal.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,8 +27,11 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TemaController {
 
-	@Autowired
-	private TemaRepository temaRepository;
+	private final TemaRepository temaRepository;
+
+	public TemaController(TemaRepository temaRepository) {
+		this.temaRepository = temaRepository;
+	}
 
 	@GetMapping
 	public ResponseEntity<List<Tema>> getAll() {
@@ -38,7 +40,7 @@ public class TemaController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Tema> getById(@PathVariable Long id) {
-		return temaRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
+		return temaRepository.findById(id).map(ResponseEntity::ok)
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
