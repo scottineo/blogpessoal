@@ -1,93 +1,96 @@
-# Personal Blog Project
-This is a personal blog application developed using Spring Boot. It allows users to register, log in, create, and manage blog posts.
+# Projeto Blog Pessoal
+Este é um projeto de blog pessoal desenvolvido com Spring Boot. Ele permite que os usuários se registrem, façam login, criem e gerenciem posts no blog.
 
-## Technologies Used
+## Tecnologias Utilizadas
 - Java 17
 - Spring Boot
 - Maven
 - Spring Data JPA
 - Spring Security
 - JWT (JSON Web Tokens)
-- MySQL (for production/main database)
-- PostgreSQL (as an alternative production/main database)
-- H2 Database (for testing)
-- SpringDoc OpenAPI (for API documentation)
+- MySQL (para banco de dados principal/produção)
+- PostgreSQL (como alternativa de banco de dados principal/produção)
+- H2 Database (para testes)
+- SpringDoc OpenAPI (para documentação da API)
 
-## Features
-- User registration and authentication (Login/Logout)
-- JWT-based security for API endpoints
-- Create, Read, Update, and Delete (CRUD) operations for blog posts
-- (User can add more specific features here)
+## Funcionalidades
+- Registro e autenticação de usuário (Login/Logout)
+- Segurança baseada em JWT para os endpoints da API
+- Operações de Criar, Ler, Atualizar e Deletar (CRUD) para posts do blog
+- (Usuário pode adicionar funcionalidades mais específicas aqui)
 
-## Getting Started
+## Como Começar
 
-### Prerequisites
-- JDK 17 or later (as specified in `pom.xml`)
-- Maven 3.6 or later
+### Pré-requisitos
+- JDK 17 ou superior (conforme especificado no `pom.xml`)
+- Maven 3.6 ou superior
 - Git
 
-### Cloning the Repository
+### Clonando o Repositório
+
 ```bash
 git clone <repository_url>
 cd blogpessoal
 ```
-(Note: Replace `<repository_url>` with the actual URL of this repository.)
 
-## Installation and Running
-Once you have the prerequisites installed and the repository cloned, navigate to the project directory (`blogpessoal`).
+(Observação: Substitua `<repository_url>` pela URL real deste repositório.)
 
-### Database Configuration
-Before running the application, you'll need to configure your database connection. See the 'Configuration' section below.
+## Instalação e Execução
+Com os pré-requisitos instalados e o repositório clonado, navegue até o diretório do projeto (`blogpessoal`).
 
-### Running the Application
-You can run the application using Maven with the following command:
+### Configuração do Banco de Dados
+Antes de executar a aplicação, você precisará configurar a conexão com o banco de dados. Veja a seção 'Configuração' abaixo.
+
+### Executando a Aplicação
+Você pode executar a aplicação usando o Maven com o seguinte comando:
 ```bash
 mvn spring-boot:run
 ```
-This command will start the embedded Tomcat server (or appropriate server based on Spring Boot configuration), and the application will be accessible, typically at `http://localhost:8080`.
+Este comando iniciará o servidor Tomcat embutido (ou servidor apropriado com base na configuração do Spring Boot), e a aplicação estará acessível, geralmente em `http://localhost:8080`.
 
-Spring Boot profiles might be used to differentiate configurations (e.g., `dev`, `prod`). If so, you might need to activate a specific profile. Check the `application.properties` file and its variants (e.g., `application-dev.properties`, `application-prod.properties`). For example, to run with a 'dev' profile:
+Perfis do Spring Boot podem ser usados para diferenciar configurações (ex: `dev`, `prod`). Se for o caso, você pode precisar ativar um perfil específico. Verifique o arquivo `application.properties` e suas variantes (ex: `application-dev.properties`, `application-prod.properties`). Por exemplo, para executar com o perfil 'dev':
+
 ```bash
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
-## Configuration
-Application settings, including database connection details, are configured in `src/main/resources/application.properties`.
+## Configuração
+As configurações da aplicação, incluindo detalhes da conexão com o banco de dados, são definidas em `src/main/resources/application.properties`.
 
-This project uses profile-specific properties files:
-- `application-dev.properties`: For development environment.
-- `application-prod.properties`: For production environment.
-The active profile determines which file's properties override the defaults in `application.properties`.
+Este projeto utiliza arquivos de propriedades específicos por perfil:
+- `application-dev.properties`: Para ambiente de desenvolvimento.
+- `application-prod.properties`: Para ambiente de produção.
+O perfil ativo determina quais propriedades de arquivo sobrescrevem os padrões do `application.properties`.
 
-For example, to configure a MySQL database for the 'dev' profile, you would update `src/main/resources/application-dev.properties` with your database URL, username, and password:
+Por exemplo, para configurar um banco de dados MySQL para o perfil 'dev', você atualizaria o arquivo `src/main/resources/application-dev.properties` com a URL do banco, nome de usuário e senha:
 ```properties
-# Example for application-dev.properties
+# Exemplo para application-dev.properties
 spring.datasource.url=jdbc:mysql://localhost:3306/your_blog_db_dev?createDatabaseIfNotExist=true&serverTimezone=UTC
 spring.datasource.username=your_mysql_username
 spring.datasource.password=your_mysql_password
-spring.jpa.hibernate.ddl-auto=update # Or 'create' for initial setup, 'validate' for production
+spring.jpa.hibernate.ddl-auto=update # Ou 'create' para configuração inicial, 'validate' para produção
 
-# For PostgreSQL, the URL would be like:
+# Para PostgreSQL, a URL seria como:
 # spring.datasource.url=jdbc:postgresql://localhost:5432/your_blog_db_dev
 ```
-Ensure the appropriate JDBC driver dependency (MySQL or PostgreSQL) is active in your `pom.xml` if you switch between them, though both are included.
+Certifique-se de que a dependência do driver JDBC apropriado (MySQL ou PostgreSQL) está ativa em seu `pom.xml` se você alternar entre eles, embora ambos estejam incluídos.
 
-## API Documentation
-This project uses SpringDoc OpenAPI to generate API documentation. Once the application is running, you can access the Swagger UI in your browser.
+## Documentação da API
+Este projeto utiliza SpringDoc OpenAPI para gerar a documentação da API. Com a aplicação em execução, você pode acessar a interface do Swagger UI no seu navegador.
 
-Typically, the documentation is available at one of the following URLs:
+Normalmente, a documentação está disponível em uma das seguintes URLs:
  - [`http://localhost:8080/swagger-ui.html`](http://localhost:8080/swagger-ui.html)
  - [`http://localhost:8080/swagger-ui/index.html`](http://localhost:8080/swagger-ui/index.html)
 
-The base path for the OpenAPI specification is usually:
+O caminho base para a especificação OpenAPI geralmente é:
  - [`http://localhost:8080/v3/api-docs`](http://localhost:8080/v3/api-docs)
 
-(The port `8080` is the default; if you have configured a different server port, please adjust the URL accordingly.)
+(A porta `8080` é a padrão; se você configurou uma porta de servidor diferente, ajuste a URL de acordo.)
 
-## Credentials
-To access the application, use the following default credentials:
+## Credenciais
+Para acessar a aplicação, utilize as seguintes credenciais padrão:
 ```
-Username: root@root.com
-Password: rootroot
+Usuário: root@root.com
+Senha: rootroot
 ```
-**Note:** These are default credentials, presumably for development and testing purposes. It is strongly recommended to change these credentials in a production environment for security reasons.
+**Observação:** Estas são credenciais padrão, presumivelmente para fins de desenvolvimento e teste. É altamente recomendável alterar essas credenciais em um ambiente de produção por motivos de segurança.
