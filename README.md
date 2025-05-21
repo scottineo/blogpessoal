@@ -27,10 +27,12 @@ Este é um projeto de blog pessoal desenvolvido com Spring Boot. Ele permite que
 - Git
 
 ### Clonando o Repositório
+
 ```bash
 git clone <repository_url>
 cd blogpessoal
 ```
+
 (Observação: Substitua `<repository_url>` pela URL real deste repositório.)
 
 ## Instalação e Execução
@@ -47,6 +49,7 @@ mvn spring-boot:run
 Este comando iniciará o servidor Tomcat embutido (ou servidor apropriado com base na configuração do Spring Boot), e a aplicação estará acessível, geralmente em `http://localhost:8080`.
 
 Perfis do Spring Boot podem ser usados para diferenciar configurações (ex: `dev`, `prod`). Se for o caso, você pode precisar ativar um perfil específico. Verifique o arquivo `application.properties` e suas variantes (ex: `application-dev.properties`, `application-prod.properties`). Por exemplo, para executar com o perfil 'dev':
+
 ```bash
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
 ```
