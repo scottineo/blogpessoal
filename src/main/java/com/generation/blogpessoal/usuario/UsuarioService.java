@@ -1,4 +1,4 @@
-package com.generation.blogpessoal.service;
+package com.generation.blogpessoal.usuario;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -11,9 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.generation.blogpessoal.model.Usuario;
-import com.generation.blogpessoal.model.UsuarioLogin;
-import com.generation.blogpessoal.repository.UsuarioRepository;
+import com.generation.blogpessoal.usuario.dto.UsuarioLoginDTO;
 import com.generation.blogpessoal.security.JwtService;
 
 @Service
@@ -58,7 +56,7 @@ public class UsuarioService {
 
 	}
 
-	public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin) {
+	public Optional<UsuarioLoginDTO> autenticarUsuario(Optional<UsuarioLoginDTO> usuarioLogin) {
 
 		var credenciais = new UsernamePasswordAuthenticationToken(usuarioLogin.get().getUsuario(),
 				usuarioLogin.get().getSenha());

@@ -1,6 +1,6 @@
-package com.generation.blogpessoal.model;
+package com.generation.blogpessoal.usuario.dto;
 
-public class UsuarioLogin {
+public class UsuarioLoginDTO {
 	private Long id;
 	private String nome;
 	private String usuario;

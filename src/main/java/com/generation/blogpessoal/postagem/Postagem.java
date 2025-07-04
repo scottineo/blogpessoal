@@ -1,8 +1,9 @@
-package com.generation.blogpessoal.model;
+package com.generation.blogpessoal.postagem;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
+import com.generation.blogpessoal.tema.Tema;
+import com.generation.blogpessoal.usuario.Usuario;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

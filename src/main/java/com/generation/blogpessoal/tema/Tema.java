@@ -1,9 +1,10 @@
-package com.generation.blogpessoal.model;
+package com.generation.blogpessoal.tema;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.generation.blogpessoal.postagem.Postagem;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

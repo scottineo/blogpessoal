@@ -1,4 +1,4 @@
-package com.generation.blogpessoal.controller;
+package com.generation.blogpessoal.usuario;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.blogpessoal.model.UsuarioLogin;
-import com.generation.blogpessoal.model.Usuario;
-import com.generation.blogpessoal.repository.UsuarioRepository;
-import com.generation.blogpessoal.service.UsuarioService;
+import com.generation.blogpessoal.usuario.dto.UsuarioLoginDTO;
 
 import jakarta.validation.Valid;
 
@@ -49,7 +46,7 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/logar")
-	public ResponseEntity<UsuarioLogin> autenticarUsuario(@RequestBody Optional<UsuarioLogin> usuarioLogin) {
+	public ResponseEntity<UsuarioLoginDTO> autenticarUsuario(@RequestBody Optional<UsuarioLoginDTO> usuarioLogin) {
 
 		return usuarioService.autenticarUsuario(usuarioLogin)
 				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
